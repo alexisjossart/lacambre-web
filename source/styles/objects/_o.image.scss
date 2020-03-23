@@ -1,0 +1,58 @@
+.o-image,
+.o-image img {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    @include spacing (m, margin-top);
+    @include spacing (m, margin-bottom);
+}
+
+/**
+ * Hide the image following the noscript tag holding the image fallback if there is not javascript
+ */
+html:not(#{$js}) noscript + .o-image {
+    display: none;
+}
+
+/**
+ * If JS is available, don't show the image contained in the noscript tag.
+ */
+#{$js} noscript .o-image {
+    display: none;
+}
+
+/* =========================================================================  */
+/* Modifier: fit */
+/* =========================================================================  */
+
+@if $enable-image-fit {
+    .o-image--fit,
+    .o-image--fit img {
+        max-height: 80vh;
+        width: auto !important;
+    }
+}
+
+/* =========================================================================  */
+/* Modifier: fit in square */
+/* =========================================================================  */
+
+@if $enable-fit-in-square {
+    .o-image--fit-portrait {
+        width: auto !important;
+        height: 100%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .o-image--fit-landscape {
+        width: 100% !important;
+        height: auto;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

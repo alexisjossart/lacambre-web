@@ -1,0 +1,64 @@
+.l-page {
+  @include font('regular');
+  margin-top: 70vh;
+  background: #00ff72;
+  @include spacing(m, padding-bottom);
+  border-top: 1px solid $black;
+  z-index: 1;
+  @include media-query(nav) {
+    display: flex;
+  }
+  h2 {
+    @include font(regular);
+    text-transform: uppercase;
+    @include spacing(m, margin-top);
+    @include spacing(s, margin-bottom);
+  }
+}
+
+.l-main {
+
+  @include spacing(s, padding-top);
+  width: 100%;
+
+  &__left {
+    @include spacing(s, padding-right);
+  }
+
+  &__right {
+    @include spacing(s, padding-left);
+  }
+
+  @include media-query(nav) {
+    max-width: span(8 of 12);
+  }
+
+}
+
+.l-sidebar {
+  width: 100%;
+  @include spacing(s, padding-top);
+  bottom: 0;
+
+  &__right {
+    @include media-query(nav) {
+      @include spacing(s, padding-left);
+    }
+  }
+
+  &__left {
+    @include media-query(nav) {
+      @include spacing(s, padding-right);
+    }
+  }
+
+  @include media-query(nav) {
+    max-width: span(4 of 12);
+  }
+
+}
+
+.c-page__home {
+  @include media-query(nav) {
+  }
+}

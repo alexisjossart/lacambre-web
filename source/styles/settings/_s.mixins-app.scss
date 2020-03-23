@@ -1,0 +1,51 @@
+/* =========================================================================  */
+/* Shared element styles */
+/* =========================================================================  */
+
+/**
+ * Define a spacing using the predefined spacings
+ *
+ *
+ * @param {String} $value - The value of the spacing selected
+ * @param {String} $property - List item selector, either of as a class
+ */
+
+$spacings: (xs: 0.8rem, s: 2rem, m: 6rem, l: 12.5rem);
+
+$mobileSpacing: 0.4rem;
+$tabletSpacing: 0.4rem;
+$desktopSpacing: 0.4rem;
+
+@mixin italic {
+  font-style: $italic;
+}
+
+:root {
+    --spacing-xs: #{$mobileSpacing * 1};
+    --spacing-s: #{$mobileSpacing * 1};
+    --spacing-m: #{$mobileSpacing * 5};
+    --spacing-l: #{$mobileSpacing * 8};
+
+    @include media-query(nav) {
+        --spacing-xs: #{$tabletSpacing * 1};
+        --spacing-s: #{$tabletSpacing * 3};
+        --spacing-m: #{$tabletSpacing * 5};
+        --spacing-l: #{$tabletSpacing * 8};
+    }
+    @include media-query(wide) {
+        --spacing-xs: #{$desktopSpacing * 1};
+        --spacing-s: #{$desktopSpacing * 3};
+        --spacing-m: #{$desktopSpacing * 5};
+        --spacing-l: #{$desktopSpacing * 8};
+    }
+}
+@mixin spacing($value: 'l', $property: 'spacing-top') {
+	#{$property}: map-get($spacings, $value);
+	#{$property}: var(--spacing-#{$value});
+}
+
+/* =========================================================================  */
+/* Old gutters */
+/* =========================================================================  */
+
+$navigation-spacing: 4px;

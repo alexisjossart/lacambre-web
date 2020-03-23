@@ -1,0 +1,28 @@
+.o-custom-select {
+    position: relative;
+    &:after {
+        content: "";
+        position: absolute;
+        top: calc(50% - 0.3rem);
+        right: 2.4rem;
+        width: 2rem;
+        height: 0.7rem;
+        background-image: url($arrow64);
+        background-size: 1.2rem auto;
+        background-position: right center;
+        background-repeat: no-repeat;
+        display: none;
+        @supports (-webkit-appearance: none) or (-moz-appearance: none) or (appearance: none) {
+            display: block;
+        }
+    }
+}
+
+.o-custom-select__select {
+    padding-right: 5rem;
+    @supports (-webkit-appearance: none) or (-moz-appearance: none) or (appearance: none) {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+}

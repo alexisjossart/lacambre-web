@@ -1,0 +1,19 @@
+.o-fixed {
+  position: fixed;
+}
+
+.o-last {
+  @include spacing(m, margin-bottom);
+}
+
+.o-overflow-hidden {
+  overflow: hidden;
+}
+
+.o-overflow-visible {
+  overflow: visible;
+}
+
+.o-display-none {
+  display: none;
+}

@@ -1,0 +1,78 @@
+/* =========================================================================  */
+/* Font Stacks */
+/* =========================================================================  */
+
+/**
+ * Fonts in use during FOUT.
+ */
+$sans-serif-fallback: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+/**
+ * Fonts in use after FOUT.
+ */
+
+$sans-serif: 'Arial', $sans-serif-fallback;
+
+/**
+ * Main font detection.
+ */
+$main-font-fallback: null;
+$main-font: null;
+$main-font-map-key: 'regular';
+
+/* =========================================================================  */
+/* Font weights */
+/* =========================================================================  */
+
+$medium: 600;
+$normal: 400;
+$light: 200;
+
+$italic: italic;
+
+/* =========================================================================  */
+/* Font maps */
+/* =========================================================================  */
+
+$fonts: (
+    'small': (
+        'font-weight': '100',
+        'font-size': (
+            'main': 1.9rem,
+            'nav': 1.6rem,
+            'wide': 1.6rem
+        ),
+        'line-height': (
+            'main': (26/19),
+            'nav': (23/16),
+            'wide': (23/16)
+        )
+    ),
+    'regular': (
+        'font-weight': '100',
+        'font-size': (
+            'main': 1.9rem,
+            'nav': 2.3rem,
+            'wide': 2.3rem
+        ),
+        'line-height': (
+            'main': (26/19),
+            'nav': (32/23),
+            'wide': (32/23)
+        )
+    ),
+    'large': (
+        'font-weight': '100',
+        'font-size': (
+            'main': 7rem,
+            'nav': 3.6rem,
+            'wide': 3.6rem
+        ),
+        'line-height': (
+            'main': (26/25),
+            'nav': (42/36),
+            'wide': (42/36)
+        )
+    )
+
+);

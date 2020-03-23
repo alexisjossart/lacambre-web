@@ -1,0 +1,174 @@
+/* =========================================================================  */
+/* Base styles */
+/* =========================================================================  */
+
+/**
+ * 1. Cross-OS-friendly font stack (during FOUT).
+ */
+body {
+    height: 100%;
+    width: 100%;
+    transition: transform 2s ease;
+    overflow-x: hidden;
+    background: #00ff72;
+    font-weight: 400;
+
+    &:after {
+      display: none;
+      content: '';
+      position: fixed;
+      width: 100%;
+      height: 1rem;
+      bottom: 0;
+      background: $blue;
+    }
+ }
+
+html {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: $black;
+    height: 100%;
+    width: 100%;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: $normal;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+/**
+ * 1. Make sure long email addresses break on small screens.
+ */
+a {
+    color: inherit;
+    text-decoration: none;
+    word-wrap: break-word; /* [1] */
+    //opacity: 0.5;
+    animation: opacity 2s ease;
+
+    &:hover {
+        text-decoration: none;
+        color: $black;
+        opacity: 1;
+    }
+    &.is-active {
+        text-decoration: none;
+        color: $black;
+        opacity: 1;
+    }
+}
+
+em, i {
+    font-style: italic;
+}
+
+abbr,
+abbr[title] {
+    text-decoration: none;
+    cursor: inherit;
+}
+
+small {
+    font-size: 100%;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: top;
+}
+
+address {
+    font-style: normal;
+}
+
+/* =========================================================================  */
+/* Form elements */
+/* =========================================================================  */
+
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="password"],
+input[type="submit"],
+textarea {
+    @include input-reset;
+}
+select {
+    font-family: inherit;
+}
+textarea {
+    min-height: 20rem;
+    @include media-query(nav) {
+        min-height: 30rem;
+    }
+}
+
+fieldset {
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+figure {
+    margin: 0;
+}
+
+button {
+    @include button-reset;
+}
+
+[contenteditable]:focus {
+    outline: 0px solid transparent;
+}
+
+/* =========================================================================  */
+/* State-specific */
+/* =========================================================================  */
+
+/**
+ * Disables scroll in the viewport.
+ */
+#{$no-scroll-class} {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+}
+
+/**
+ * 1. Asynchronous webfonts load (after FOUT).
+ */
+#{$webfonts-class} {
+    font-family: $main-font; /* [1] */
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+  }
+/* =========================================================================  */
+/* Disable focus effects when user is using a mouse or a touch device */
+/* =========================================================================  */
+[data-whatintent="touch"] a:focus,
+[data-whatintent="mouse"] a:focus,
+[data-whatintent="touch"] button:focus,
+[data-whatintent="mouse"] button:focus,
+[data-whatintent="touch"] main:focus,
+[data-whatintent="mouse"] main:focus {
+    outline: none;
+}
+
+::selection {
+  background: $blue;
+  color: white;
+}

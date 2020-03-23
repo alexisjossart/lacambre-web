@@ -1,0 +1,4 @@
+.l-container {
+  @include spacing(s, padding-left);
+  @include spacing(s, padding-right);
+}

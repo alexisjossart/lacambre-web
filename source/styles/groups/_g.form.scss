@@ -1,0 +1,43 @@
+.g-form {
+    // margin: 3rem 0 5rem 0;
+    transition: 0.3s ease-out;
+    @include spacing(xm, margin-top);
+    @include spacing(m, margin-bottom);
+    @include media-query(s) {
+        width: 100%;
+    }
+    @include media-query(nav) {
+        width: span(8, $susy_m);
+        margin-left: span(2 wide, $susy_m);
+    }
+}
+
+.g-form__submit {
+    @include spacing(xm, margin-top);
+    @include media-query(s) {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+.g-form__success {
+    display: none;
+
+    &.is-visible {
+        display: block;
+    }
+}
+
+
+.g-form.is-disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.g-form.is-hidden {
+    display: none;
+}
+
+.g-form.is-submitted {
+    overflow: hidden;
+}

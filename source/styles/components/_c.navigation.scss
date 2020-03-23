@@ -1,0 +1,27 @@
+.c-navigation {
+  width: 100%;
+  top: 0;
+  @include font('large');
+  position: fixed;
+  z-index: -1;
+}
+
+.c-navigation__list {
+  list-style: none;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+.c-navigation__item {
+  &:first-child {
+    color: blue;
+  }
+
+}
+.c-navigation__link {
+
+  &:hover {
+    color: red;
+  }
+
+}

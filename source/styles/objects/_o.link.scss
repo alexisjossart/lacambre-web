@@ -1,0 +1,9 @@
+.o-link {
+  border-bottom: 1px solid $black;
+  cursor: pointer;
+  &:hover {
+    //text-shadow: rgba(0, 0, 0, 0.498039) 0px 0px 10px;
+    color: $blue;
+    border-color: $blue;
+  }
+}

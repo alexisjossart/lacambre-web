@@ -1,0 +1,42 @@
+.o-map__image {
+    display: block;
+    width: 100%;
+}
+
+/* =========================================================================  */
+/* JavaScript enabled */
+/* =========================================================================  */
+
+#{$js} .o-map {
+    cursor: pointer;
+}
+
+#{$js} .o-map__interface {
+    pointer-events: none;
+}
+
+#{$js} .o-map__image {
+    display: none;
+}
+
+#{$js} .o-map__interface {
+    display: block;
+    width: 100%;
+    height: 350px;
+
+    @include media-query( 'm' ) {
+        height: 450px;
+    }
+
+    @include media-query( 'l' ) {
+        height: 540px;
+    }
+}
+
+/* =========================================================================  */
+/* States */
+/* =========================================================================  */
+
+.o-map.is-active .o-map__interface {
+    pointer-events: all !important;
+}

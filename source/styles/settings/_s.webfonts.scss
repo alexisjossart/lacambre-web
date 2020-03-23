@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'Avara';
+    src:         url("/assets/fonts/Avara/Avara-Bold_web.eot");
+    src:         url("/assets/fonts/Avara/Avara-Bold_web?#iefix") format("embedded-opentype"),
+                 url("/assets/fonts/Avara/Avara-Bold_web.woff") format("woff"),
+                 url("/assets/fonts/Avara/Avara-Bold_web.woff2") format("woff2");
+
+    font-weight: $normal;
+    font-style:  normal;
+}
+
+
+@font-face {
+    font-family: 'Savate';
+    src:         url("/assets/fonts/Savate/savate-regular-webfont.eot");
+    src:         url("/assets/fonts/Savate/savate-regular-webfont?#iefix") format("embedded-opentype"),
+                 url("/assets/fonts/Savate/savate-regular-webfont.woff") format("woff"),
+                 url("/assets/fonts/Savate/savate-regular-webfont.woff2") format("woff2");
+
+    font-weight: $normal;
+    font-style:  normal;
+}
+
+@font-face {
+    font-family: 'Sporting';
+    src:         url("/assets/fonts/Sporting/Sporting_Grotesque-Regular_web.eot");
+    src:         url("/assets/fonts/Sporting/Sporting_Grotesque-Regular_web?#iefix") format("embedded-opentype"),
+                 url("/assets/fonts/Sporting/Sporting_Grotesque-Regular_web.woff") format("woff"),
+                 url("/assets/fonts/Sporting/Sporting_Grotesque-Regular_web.woff2") format("woff2");
+
+    font-weight: $normal;
+    font-style:  normal;
+}
+
+@font-face {
+    font-family: 'YoungSerif';
+    src:         url("/assets/fonts/YoungSerif/YoungSerif-Regular.eot");
+    src:         url("/assets/fonts/YoungSerif/YoungSerif-Regular?#iefix") format("embedded-opentype"),
+                 url("/assets/fonts/YoungSerif/YoungSerif-Regular.woff") format("woff"),
+                 url("/assets/fonts/YoungSerif/YoungSerif-Regular.woff2") format("woff2");
+
+    font-weight: $normal;
+    font-style:  normal;
+}
+
+@font-face {
+    font-family: 'Ouroboros';
+    src:         url("/assets/fonts/Ouroboros/Ouroboros-Regular.eot");
+    src:         url("/assets/fonts/Ouroboros/Ouroboros-Regular?#iefix") format("embedded-opentype"),
+                 url("/assets/fonts/Ouroboros/Ouroboros-Regular.woff") format("woff"),
+                 url("/assets/fonts/Ouroboros/Ouroboros-Regular.woff2") format("woff2");
+
+    font-weight: $normal;
+    font-style:  normal;
+}

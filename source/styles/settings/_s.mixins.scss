@@ -1,0 +1,375 @@
+/* =========================================================================  */
+/* Resets */
+/* =========================================================================  */
+
+/**
+ * Fixes VoiceOver not announcing list properly
+ * due to `list-style: none`.
+ * See:
+ * https://unfetteredthoughts.net/2017/09/26/voiceover-and-list-style-type-none/
+ *
+ * @param {String} $item-selector - List item selector, either of as a class
+ *        (results in nesting) or referrencing the element (E) of
+ *        the B__E--M  notation. (optional)
+ */
+@mixin list-reset-voiceover-fix($item-selector: 'li') {
+    $first-char: str-slice($item-selector, 0, 1);
+    $selector: '';
+    @if $first-char == '.' {
+        $selector: $item-selector;
+    }
+    @elseif $item-selector != 'li' {
+        $selector: '&__'+$item-selector;
+    }
+    @else {
+        $selector: '& > li';
+    }
+    #{$selector}:before {
+        content: $zero-width-space; /* [1] */
+        font-size: 0;
+        display: block;
+        height: 0;
+    }
+}
+
+/**
+ * Resets list styles.
+ *
+ * @requires @mixin `list-reset-voiceover-fix`
+ *
+ * @param {String} $item-selector - List item selector, either of as a class
+ *        (results in nesting) or referrencing the element (E) of
+ *        the B__E--M  notation. (optional)
+ */
+@mixin list-reset($item-selector: 'li') {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    @include list-reset-voiceover-fix($item-selector);
+}
+
+/**
+ * Resets button styles for a common cross-browser base.
+ */
+@mixin button-reset {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    font: inherit;
+    padding: 0;
+}
+
+/**
+ * Resets input styles for a common cross-browser base.
+ */
+@mixin input-reset {
+    font-family: inherit;
+}
+
+/* =========================================================================  */
+/* Layout */
+/* =========================================================================  */
+
+/**
+ * Wraps the bracketed @content into a media query matching
+ * the given breakpoint key.
+ *
+ * @param {String} $from - the min-width breakpoint.
+ * @param {String} $to - the max-width breakpoint (optional).
+ *
+ * @requires @variable $layouts-name.
+ * @requires @variable $layouts-break-point.
+ */
+@mixin media-query($from, $to: false) {
+    $from-index: index($layouts-name, $from);
+    $from-breakpoint:
+        if($from-index, nth($layouts-break-point, $from-index), $from);
+
+    @if $to {
+        $to-index: index($layouts-name, $to);
+        $to-breakpoint:
+            if($to-index, nth($layouts-break-point, $to-index), $to) - 1;
+
+        @if ($from-breakpoint == 0) {
+            @media (max-width: $to-breakpoint) {
+                @content;
+            }
+        } @else {
+            @media only screen and
+            (min-width: $from-breakpoint) and (max-width: $to-breakpoint) {
+                @content;
+            }
+        }
+    } @else {
+        @if ($from-breakpoint == 0) {
+            @content;
+        } @else {
+            @media (min-width: $from-breakpoint) {
+                @content;
+            }
+        }
+    }
+}
+
+/* =========================================================================  */
+/* Breakpoint loops */
+/* =========================================================================  */
+
+/**
+ * For a given property, outputs the value for a given list of values matching
+ * (binding on index) the $layouts-break-point list.
+ *
+ * @requires @mixin `media-query`.
+ * @requries @variable $layouts-name.
+ *
+ * @requires mixin `media-query`.
+ * @requires @variable $layouts-name.
+ */
+@mixin responsive($arglist...) {
+    $last-results: $arglist;
+    $multiplier: 1;
+    @if ( type-of(nth($arglist, 1)) != 'list' ) {
+        $arglist: $arglist,;
+    }
+    @each $layout-name in $layouts-name {
+        @include media-query($layout-name) {
+            @each $args in $arglist {
+                $i: index($arglist, $args);
+                $property: nth($args, 1);
+                $value: nth($args, 2);
+                $multipliers: if( length($args) >= 3, nth($args, 3), 1 );
+                $adder: if( length($args) >= 4, nth($args, 4), 0 );
+                $string: if( length($args) >= 5, nth($args, 5), '' );
+                @if (type-of($value) != "map") {
+                    $value: ( nth($layouts-name, 1): $value );
+                }
+                @if map-has-key($value, $layout-name) {
+                    @if (type-of($multipliers) == "map") {
+                        $multiplier:
+                            if( map-get($multipliers, $layout-name),
+                            map-get($multipliers, $layout-name), $multiplier );
+                    } @else {
+                        $multiplier: $multipliers;
+                    }
+                    $result:
+                        unquote(multiply-all(map-get($value, $layout-name),
+                        $multiplier, $adder) + $string);
+                    @if ( $result != nth($last-results, $i) ) {
+                        #{$property}: $result;
+                    }
+                    $last-results: set-nth($last-results, $i, $result);
+                }
+            }
+        }
+    }
+}
+
+/* =========================================================================  */
+/* Typography */
+/* =========================================================================  */
+
+/**
+ * Outputs the font-family rule with the fallbak to start with and the webfont
+ * once loaded.
+ *
+ * @param {String} $type - the type of font.
+ *
+ * @requires @variable $sans-serif-fallback
+ * @requires @variable $sans-serif
+ * @requires @variable $sans-serif-fallback
+ * @requires @variable $sans-serif
+ */
+@mixin font-family($type) {
+    @if $type == 'sans-serif' or $type == 'sans' {
+        font-family: $sans-serif-fallback;
+
+        #{$webfonts-class} & {
+            font-family: $sans-serif;
+        }
+    }
+    @elseif $type == 'sans-secondary' {
+        font-family: $sans-serif-fallback;
+
+        #{$webfonts-class} & {
+            font-family: $sans-serif-secondary;
+        }
+    }
+    @elseif $type == 'serif' {
+        font-family: $serif-fallback;
+
+        #{$webfonts-class} & {
+            font-family: $serif;
+        }
+    }
+}
+
+/**
+ * Outputs all properties and values for each breakpoint in a given font map.
+ *
+ * @param {String} $font-map-key - the key to a font map in $fonts.
+ *
+ * @requires @mixin `responsive`.
+ * @requires @mixin `font-family`.
+ * @requires @variable $fonts.
+ */
+@mixin font($font-map-key) {
+    $font-map: map-get($fonts, $font-map-key);
+
+    @each $property, $value in $font-map {
+
+        @if( $property == 'font-family' ) {
+            @include font-family($value);
+        } @else {
+            @include responsive($property, $value);
+        }
+    }
+}
+
+/**
+ * Outputs font size for each breakpoint in a given font map.
+ *
+ * @param {String} $font-map-key - the key to a font map in $fonts.
+ *
+ * @requires @mixin `responsive`.
+ * @requires @variable $fonts.
+ *
+ * 1. Get the font map.
+ * 2. Get the font size map.
+ * 3. Run the responsive mixin with `font-size`
+ *    as property and ``$fs-responsive-map` as map.
+ */
+@mixin font-size-only($font-map-key) {
+    $font-map: map-get($fonts, $font-map-key); /* [1] */
+    $fs-responsive-map: map-get($font-map, 'font-size'); /* [2] */
+    @include responsive('font-size', $fs-responsive-map); /* [3] */
+}
+
+/**
+ * Outputs a font property value from a given property and breakpoint
+ * e.g. : margin: font-property-value('body-sans', 'line-height', 'main');
+ *
+ * @param {String} $font-map-key - the key to a font map in $fonts.
+ * @param {String} $property - the property needed (font-size or line-height).
+ * @param {String} $breakpoint - a breakpoint in $layouts-break-point.
+ *
+ * @requires @variable $fonts.
+ *
+ * 1. Get the font map.
+ * 2. Get the property map.
+ * 3. Return the value at a specific breakpoint
+ */
+@function font-property-value($font-map-key, $property, $breakpoint) {
+    $font-map: map-get($fonts, $font-map-key); /* [1] */
+    $font-map-property: map-get($font-map, $property); /* [2] */
+    $font-map-property-value: map-get($font-map-property, $breakpoint);
+    @if $font-map-property-value == '' {
+        @warn 'No values are defined for `#{$property}` at breakpoint `#{$breakpoint}`.';
+    }
+    @return $font-map-property-value; /* [3] */
+}
+
+/**
+ * Outputs all properties for a given font map at a specific breakpoint.
+ *
+ * @param {String} $font-name - the key to a font map in $fonts.
+ * @param {String} $breakpoint - a breakpoint in $layouts-break-point.
+ *
+ * @requires @mixin `responsive`.
+ * @requires @variable $fonts.
+ * @requires @variable $layouts-break-point.
+ */
+@mixin font-at-breakpoint($font-map-key, $breakpoint) {
+    $font-map: map-get($fonts, $font-map-key);
+    @each $property-list in $font-map {
+        $property: nth($property-list, 1);
+        $values-map: nth($property-list, 2);
+        @if map-has-key($values-map, $breakpoint) {
+            #{$property}: map-get($values-map, $breakpoint);
+        }
+        @else {
+            @warn 'No values are defined for `#{$property}`
+            at breakpoint `#{$breakpoint}`.';
+        }
+    }
+}
+
+/* =========================================================================  */
+/* Visibility */
+/* =========================================================================  */
+
+/**
+ * Hides content visually.
+ */
+@mixin visually-hidden {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+/**
+ * Reverts visibility of visually hidden element.
+ */
+@mixin all-screens {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: auto;
+}
+
+/* =========================================================================  */
+/* Interactivity */
+/* =========================================================================  */
+
+/**
+ * Expands the target area of the inner link to the boundaries
+ * of the current CSS selector.
+ *
+ * @param {String} $link-selector - a CSS selector
+ *     for the inner link (optional).
+ * @param {String} $pseudo-element - `before` or `after` (optional).
+ * @param {Int} $z-ghost-link - the z-index to apply
+ *     to the pseudo element (optional).
+ */
+@mixin expand-interaction-to-card($link-selector: 'a',
+$pseudo-element: 'before', $z-ghost-link: 1) {
+    position: relative;
+    z-index: $z-ghost-link - 1;
+
+    #{$link-selector}::#{$pseudo-element} {
+        content: ' ';
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: $z-ghost-link;
+    }
+}
+
+/* =========================================================================  */
+/* Others */
+/* =========================================================================  */
+
+@mixin link-reset {
+  text-decoration: none;
+  list-style: none outside none;
+}
+
+@mixin transition-all {
+  transition: all 0.1s ease;
+}
+
+
+@mixin l-container {
+  @include spacing(s, padding-left);
+  @include spacing(s, padding-right);
+}

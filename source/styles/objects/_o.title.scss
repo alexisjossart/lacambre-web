@@ -1,0 +1,12 @@
+.o-title {
+  @include font('regular');
+  @include spacing(m, margin-top);
+  @include spacing(s, margin-bottom);
+  display: block;
+
+}
+
+
+.sc-rich-text .o-title + p {
+    @include spacing(s, margin-top);
+}

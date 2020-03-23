@@ -1,0 +1,10 @@
+.c-header {
+  background: $white;
+}
+
+.c-header__title {
+  text-align: center;
+  @include spacing(m, padding-bottom);
+  @include spacing(m, padding-top);
+  font-family: "Ouroboros";
+}

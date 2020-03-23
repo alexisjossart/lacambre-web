@@ -1,0 +1,57 @@
+/* =========================================================================  */
+/* Enablers to keep the default footprint low */
+/* =========================================================================  */
+
+/**
+ * Image modifiers.
+ */
+$enable-image-fit: false !default;
+$enable-fit-in-square: false !default;
+
+/**
+ * Components.
+ */
+$enable-video-component: false !default;
+
+/**
+ * Helpers.
+ */
+$enable-js-visibility-helpers: false !default;
+
+/* =========================================================================  */
+/* Typography */
+/* =========================================================================  */
+
+/// 'sans-serif' or 'serif'
+$main-font-type: 'sans-serif' !default;
+
+/* =========================================================================  */
+/* Classes */
+/* =========================================================================  */
+
+$js: '.js' !default;
+$display-none-class: '.hidden' !default;
+$webfonts-class: '.webfonts' !default;
+$no-scroll-class: '.is-locked' !default;
+
+/* =========================================================================  */
+/* Values */
+/* =========================================================================  */
+
+/**
+ * Underline.
+ */
+$underline-bottom-padding: 2px !default;
+$underline-thickness: 1px !default;
+
+/**
+ * Video.
+ */
+$video-wrap-bg-color: $white !default;
+$video-scrim-over-still: true !default;
+$video-scrim-over-placeholder: false !default;
+$video-screenfit: false !default;
+$video-scrim-color: $black !default;
+$video-still-opacity: 0.80 !default;
+$video-icon-size: 36px !default;
+$video-easing: $ease-in-out-quart !default;

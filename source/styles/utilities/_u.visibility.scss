@@ -1,0 +1,66 @@
+/**
+ * Hide only visually, but have it available for screen readers:
+ * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ *
+ * 1. For long content, line feeds are not interpreted as spaces and small width
+ *    causes content to wrap 1 word per line:
+ *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+ * 2. Extends the  class to allow the element to be focusable when navigated
+ *    to via the keyboard: https://www.drupal.org/node/897638
+ */
+.u-visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap; /* [1] */
+
+    &.is-focusable:active,
+    &.is-focusable:focus { /* [2] */
+        clip: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        position: static;
+        width: auto;
+        white-space: inherit;
+    }
+}
+
+/**
+ * Hide text while making it readable for screen readers
+ * 1. Needed in WebKit-based browsers because of an implementation bug;
+ *    See: https://code.google.com/p/chromium/issues/detail?id=457146
+ */
+.u-hide-text {
+    overflow: hidden;
+    padding: 0; /* [1] */
+    text-indent: 101%;
+    white-space: nowrap;
+}
+
+#{$display-none-class} {
+    display: none;
+}
+
+/**
+ * Elements that should be visible only if JavaScript is not available.
+ */
+#{$js} .u-no-js {
+    display: none;
+}
+
+/* =========================================================================  */
+/* Progressive enhancement */
+/* =========================================================================  */
+
+@if $enable-js-visibility-helpers {
+
+    #{$js} #{$display-none-class} {
+        display: none;
+    }
+}
