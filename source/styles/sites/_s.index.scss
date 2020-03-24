@@ -1,0 +1,32 @@
+.s-index__background {
+  background: $beige;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.s-index__logo {
+  width: 100vw;
+}
+
+.s-index__navigation {
+
+}
+
+.s-index__navigation__list {
+
+}
+
+.s-index__navigation__item {
+  border: 1px solid black;
+  position:fixed;
+  list-style: none;
+  text-decoration: none;
+  @include spacing(s,padding-top);
+  @include spacing(s,padding-bottom);
+  @include spacing(s,padding-left);
+  @include spacing(s,padding-right);
+}
+
+.s-index__navigation__link {
+}
