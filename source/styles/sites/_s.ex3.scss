@@ -1,0 +1,59 @@
+.s-ex3__background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $white;
+}
+
+.s-ex3__head {
+  background: $red;
+  position: relative;
+  border-radius: 50%;
+  width: 50%;
+  height: auto;
+  padding-top: 50%;
+  position: relative;
+}
+
+.s-ex3__left-eye {
+  content:"";
+  width: 20%;
+  height: 20%;
+  position: absolute;
+  border-radius: 50% 50% 0 0;
+  top: 12%;
+  left:22%;
+  background: $black;
+}
+
+.s-ex3__right-eye {
+  content: '';
+  width: 15%;
+  height: 0;
+  padding-left:18%;
+  padding-bottom: 18%;
+  overflow: hidden;
+  top: 15%;
+  right: 22%;
+  position: absolute;
+}
+
+
+.s-ex3__right-eye:after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    margin-left:-500px;
+    border-left: 500px solid transparent;
+    border-right: 500px solid transparent;
+    border-bottom: 500px solid $black;
+}
+
+.s-ex3__nose {
+  content: '';
+}
+
+.s-ex3__mouth {
+  content: '';
+}
