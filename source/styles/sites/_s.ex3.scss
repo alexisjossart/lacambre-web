@@ -2,17 +2,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: $white;
+  background: #eae9df;
 }
 
 .s-ex3__head {
-  background: $red;
+  background: $black;
   position: relative;
   border-radius: 50%;
   width: 50%;
   height: auto;
   padding-top: 50%;
   position: relative;
+  animation: headAnimation 5s infinite;
+}
+
+@keyframes headAnimation {
+  0% { background-color: #000;}
+  50% { background-color: #b3af8b;}
+  100% { background-color: #000;}
 }
 
 .s-ex3__left-eye {
@@ -23,7 +30,15 @@
   border-radius: 50% 50% 0 0;
   top: 12%;
   left:22%;
-  background: $black;
+  background: #eae9df;
+  animation: leftEyeAnimation 10s infinite;
+}
+
+@keyframes leftEyeAnimation {
+  0% {}
+  3% { height: 5%;}
+  4% { height: 20%;}
+  100% {}
 }
 
 .s-ex3__right-eye {
@@ -36,6 +51,13 @@
   top: 15%;
   right: 22%;
   position: absolute;
+  animation: rightEyeAnimation 5s infinite;
+}
+
+@keyframes rightEyeAnimation {
+  0% { -webkit-transform: rotate(0deg);}
+  50% { -webkit-transform: rotate(360deg);}
+  100% { -webkit-transform: rotate(0deg);}
 }
 
 
@@ -47,11 +69,25 @@
     margin-left:-500px;
     border-left: 500px solid transparent;
     border-right: 500px solid transparent;
-    border-bottom: 500px solid $black;
+    border-bottom: 500px solid #eae9df;
 }
 
 .s-ex3__nose {
-  content: '';
+  content:"";
+  width: 40%;
+  height: 20%;
+  position: absolute;
+  bottom: 12%;
+  left: 30%;
+  background: #eae9df;
+  animation: noseAnimation 10s infinite;
+}
+
+@keyframes noseAnimation {
+  0% { -webkit-transform: rotate(0deg);}
+  25% { -webkit-transform: rotate(-10deg);}
+  50% { -webkit-transform: rotate(10deg);}
+  100% { -webkit-transform: rotate(0deg);}
 }
 
 .s-ex3__mouth {
