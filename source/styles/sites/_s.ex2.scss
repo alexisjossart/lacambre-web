@@ -1,5 +1,45 @@
 .c-typefaces {}
 
+.s-ex2__background {
+  background: #e5e7b9;
+}
+
+.s-ex2__header {
+  @include spacing(s, margin-top);
+  @include spacing(s, margin-bottom);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.s-ex2__single__header {}
+
+.s-ex2__single__link {
+  height: 25%;
+  top: 0;
+  width: 100%;
+}
+
+.s-ex2__main {
+  box-shadow: 0 0 40px 0 rgba(0,0,0,.5);
+  position: absolute;
+  top: 10%;
+  z-index: 0;
+  background: $white;
+  overflow: hidden;
+  overflow-x: hidden;
+  width: 100%;
+  @include media-query('nav') {
+      top: 25%;
+  }
+}
+
+.s-ex2__single__link {
+  position: absolute;
+  z-index: 1;
+}
+
 .c-typefaces__item {
   @include spacing(s, padding-top);
   @include spacing(xs, padding-bottom);
@@ -26,6 +66,7 @@
 }
 
 .c-typefaces__header {
+  @include spacing(s, margin-top);
   display: flex;
   justify-content: space-between;
   opacity: 1;
@@ -38,7 +79,7 @@
 .c-typefaces__custom-text {
   transition: 0.1s ease;
   white-space: nowrap;
-  margin-right: gutter();
+  width: 100%;
   line-height: 1;
   @include spacing(s, padding-top);
   @include spacing(xs, padding-bottom);
@@ -61,6 +102,8 @@
 
 
 
+
+
 .c-typeface--font1 {
   font-family: "Avara";
 }
@@ -78,47 +121,71 @@
 }
 
 
-.c-specimen {}
 
-.c-specimen__style1 {
-  font-size: 30vw;
+
+
+.s-ex2__single {}
+
+.s-ex2__single__style1 {
+  font-size: 18vw;
   text-align: center;
 }
 
-.c-specimen__style2 {
-  font-size: 3rem;
+.s-ex2__single__author {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.s-ex2__single__style2 {
+  font-size: 2.2rem;
   text-align: center;
   @include spacing(m, margin-top);
+
+  @include media-query('nav') {
+    font-size: 3rem;
+  }
+
 }
 
-.c-specimen__style3 {
-  font-size: 10rem;
+.s-ex2__single__style3 {
+  font-size: 6rem;
   text-align: center;
   line-height: 1;
   @include spacing(l, margin-top);
+
+  @include media-query('nav') {
+    font-size: 10rem;
+  }
+
 }
 
-.c-specimen__style4 {
+.s-ex2__single__style4 {
   font-size: 6rem;
   text-align: center;
   line-height: 1;
   @include spacing(l, margin-top);
 }
 
-.c-specimen__style5 {
+.s-ex2__single__style5 {
   font-size: 3rem;
   text-align: left;
   line-height: 1.2;
-  column-gap: 1rem;
-  columns: 2;
   @include spacing(l, margin-top);
+  @include media-query('nav') {
+    column-gap: 1rem;
+    columns: 2;
+  }
 }
 
-.c-specimen__style6 {
+.s-ex2__single__style6 {
   font-size: 2rem;
   text-align: left;
   line-height: 1.2;
-  column-gap: 1rem;
-  columns: 3;
   @include spacing(l, margin-top);
+  @include spacing(l, margin-bottom);
+
+  @include media-query('nav') {
+    column-gap: 1rem;
+    columns: 3;
+  }
 }
