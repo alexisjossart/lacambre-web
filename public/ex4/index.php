@@ -120,7 +120,7 @@
 									 <label>Name</label>
 									 <input id="name" type="text" name="name" class="form-control" /><br />
 									 <label>Gender</label>
-									 <input id="gender" type="text" name="gender" value="gender" class="form-control" /><br />
+									 <input id="gender" type="text" name="gender" class="form-control" /><br />
 									 <label>Designation</label>
 									 <input type="text" name="designation" class="form-control" /><br />
 									 <input type="submit" name="submit" value="Append" class="btn btn-info" /><br />
@@ -161,7 +161,7 @@
 								var mainContainer = document.getElementById("myData");
 								for (var i = 0; i < data.length; i++) {
 										var div = document.createElement("div");
-										div.innerHTML = 'Lattitude: ' + data[i].name + 'Longitude:' + data[i].gender;
+										div.innerHTML = 'Lattitude: ' + data[i].name + 'Longitude:' + data[i].gender + 'Task:' + data[i].designation;
 										mainContainer.appendChild(div);
 								}
 						}
