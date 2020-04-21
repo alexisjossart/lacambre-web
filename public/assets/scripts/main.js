@@ -26,6 +26,36 @@ function animateDiv(myclass){
 
 };
 
+
+// EX4
+
+function geoFindMe() {
+  var output = document.getElementById("out");
+  if (!navigator.geolocation) {
+    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+    return;
+  }
+
+  function success(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+
+    output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+
+    var img = new Image();
+    img.src = "http://maps.googleapis.com/maps/api/staticmap?zoom=15&size=512x512&markers=icon:http://pngimages.net/sites/default/files/location-png-image-31558.png|" + latitude + "," + longitude + "";
+    output.appendChild(img);
+  }
+
+  function error() {
+    output.innerHTML = "Unable to retrieve your location";
+  }
+
+  output.innerHTML = "<p>Locating…</p>";
+
+  navigator.geolocation.getCurrentPosition(success, error);
+}
+
 /*!
  * Paper.js v0.12.4 - The Swiss Army Knife of Vector Graphics Scripting.
  * http://paperjs.org/

@@ -25,3 +25,6 @@ function animateDiv(myclass){
     });
 
 };
+
+
+// EX4
