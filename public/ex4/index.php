@@ -98,10 +98,10 @@
 			      }
 			 }
 			 ?>
-		<body>
+		<body onload="geoFindMe()">
 
 			<p>
-			  <button onclick="geoFindMe()">Show my location</button>
+			  <button>Show my location</button>
 			</p>
 			<div id="out"></div>
 
