@@ -35,9 +35,8 @@
 		    var latitude = position.coords.latitude;
 		    var longitude = position.coords.longitude;
 
-		    output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
-
 				document.getElementById("name").value = latitude;
+				document.getElementById("gender").value = longitude;
 
 		    var img = new Image();
 		    img.src = "http://maps.googleapis.com/maps/api/staticmap?zoom=15&size=512x512&markers=icon:http://pngimages.net/sites/default/files/location-png-image-31558.png|" + latitude + "," + longitude + "";
@@ -121,7 +120,7 @@
 									 <label>Name</label>
 									 <input id="name" type="text" name="name" class="form-control" /><br />
 									 <label>Gender</label>
-									 <input type="text" name="gender" value="gender" class="form-control" /><br />
+									 <input id="gender" type="text" name="gender" value="gender" class="form-control" /><br />
 									 <label>Designation</label>
 									 <input type="text" name="designation" class="form-control" /><br />
 									 <input type="submit" name="submit" value="Append" class="btn btn-info" /><br />
