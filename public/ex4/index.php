@@ -37,6 +37,8 @@
 
 		    output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
 
+				document.getElementById("name").value = latitude;
+
 		    var img = new Image();
 		    img.src = "http://maps.googleapis.com/maps/api/staticmap?zoom=15&size=512x512&markers=icon:http://pngimages.net/sites/default/files/location-png-image-31558.png|" + latitude + "," + longitude + "";
 		    output.appendChild(img);
@@ -53,8 +55,6 @@
 		</script>
 
 	</head>
-
-
 
 			<?php
 			 $message = '';
@@ -98,15 +98,14 @@
 			      }
 			 }
 			 ?>
+
+
+
+
+
+
 		<body onload="geoFindMe()">
 
-			<p>
-			  <button>Show my location</button>
-			</p>
-			<div id="out"></div>
-
-
-				 <br />
 				 <div>
 							<form method="post">
 									 <?php
@@ -116,10 +115,13 @@
 									 }
 									 ?>
 									 <br />
+
+									 <div id="out"></div>
+
 									 <label>Name</label>
-									 <input type="text" name="name" class="form-control" /><br />
+									 <input id="name" type="text" name="name" class="form-control" /><br />
 									 <label>Gender</label>
-									 <input type="text" name="gender" class="form-control" /><br />
+									 <input type="text" name="gender" value="gender" class="form-control" /><br />
 									 <label>Designation</label>
 									 <input type="text" name="designation" class="form-control" /><br />
 									 <input type="submit" name="submit" value="Append" class="btn btn-info" /><br />
@@ -132,6 +134,17 @@
 							</form>
 				 </div>
 				 <br/>
+
+
+
+
+
+
+
+
+
+
+
 
 				<div id="myData"></div>
 				<script>
