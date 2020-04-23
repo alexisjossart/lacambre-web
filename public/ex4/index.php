@@ -117,11 +117,11 @@
 
 									 <div id="out"></div>
 
-									 <label>Name</label>
+									 <label>Lattitude</label>
 									 <input id="name" type="text" name="name" class="form-control" /><br />
-									 <label>Gender</label>
+									 <label>Longitude</label>
 									 <input id="gender" type="text" name="gender" class="form-control" /><br />
-									 <label>Designation</label>
+									 <label>Place</label>
 									 <input type="text" name="designation" class="form-control" /><br />
 									 <input type="submit" name="submit" value="Append" class="btn btn-info" /><br />
 									 <?php
