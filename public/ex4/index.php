@@ -68,10 +68,6 @@
 			      {
 			           $error = "<label class='text-danger'>Enter Gender</label>";
 			      }
-			      else if(empty($_POST["designation"]))
-			      {
-			           $error = "<label class='text-danger'>Enter Designation</label>";
-			      }
 			      else
 			      {
 			           if(file_exists('employee_data.json'))
@@ -80,8 +76,7 @@
 			                $array_data = json_decode($current_data, true);
 			                $extra = array(
 			                     'name'               =>     $_POST['name'],
-			                     'gender'          =>     $_POST["gender"],
-			                     'designation'     =>     $_POST["designation"]
+			                     'gender'          =>     $_POST["gender"]
 			                );
 			                $array_data[] = $extra;
 			                $final_data = json_encode($array_data);
@@ -125,9 +120,6 @@
 										 <div id="out"></div>
 										 <input id="name" type="text" name="name" placeholder="Lattitude" class="form-control" /><br />
 										 <input id="gender" type="text" name="gender" placeholder="Longitude" class="form-control" /><br />
-										<!--
-										 <input type="text" name="designation" class="form-control" /><br />
-										-->
 										 <input type="submit" name="submit" value="Append" class="btn-submit" /><br />
 
 										 <?php
