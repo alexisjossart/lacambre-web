@@ -119,8 +119,8 @@
   @include spacing(m, margin-left);
   @include media-query('nav') {
     @include spacing(s, margin-left);
-    height: 96vh;
-    width: 50vw;
+    height: 76vh;
+    width: 39vw;
   }
 }
 
