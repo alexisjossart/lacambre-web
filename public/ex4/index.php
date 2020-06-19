@@ -87,7 +87,7 @@
 			                $final_data = json_encode($array_data);
 			                if(file_put_contents('employee_data.json', $final_data))
 			                {
-			                     $message = "<label class='text-success'>File Appended Success fully</p>";
+			                     $message = "<label class='text-success'>File Appended Successfully</p>";
 			                }
 			           }
 			           else
