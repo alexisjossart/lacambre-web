@@ -103,69 +103,75 @@
 
 
 
-		<body onload="geoFindMe()">
+		<body class="ex4-body" onload="geoFindMe()">
 
-				 <div>
+			<div class="introduction">
+					<img src="../assets/images/covshit-logo.svg" class="covshit-logo">
+			</div>
+
+			<span class="house"></span>
+
+				 <div class="header">
 							<form method="post">
+
 									 <?php
 									 if(isset($error))
 									 {
 												echo $error;
 									 }
 									 ?>
-									 <br />
 
-									 <div id="out"></div>
+									 <div class="header-container">
+										 <div id="out"></div>
+										 <input id="name" type="text" name="name" placeholder="Lattitude" class="form-control" /><br />
+										 <input id="gender" type="text" name="gender" placeholder="Longitude" class="form-control" /><br />
+										 <input type="submit" name="submit" value="Append" class="btn-submit" /><br />
 
-									 <label>Lattitude</label>
-									 <input id="name" type="text" name="name" class="form-control" /><br />
-									 <label>Longitude</label>
-									 <input id="gender" type="text" name="gender" class="form-control" /><br />
-									 <label>Place</label>
-									 <input type="text" name="designation" class="form-control" /><br />
-									 <input type="submit" name="submit" value="Append" class="btn btn-info" /><br />
-									 <?php
-									 if(isset($message))
-									 {
-												echo $message;
-									 }
-									 ?>
+										 <?php
+										 if(isset($message))
+										 {
+													echo $message;
+										 }
+										 ?>
+
+									</div>
+
 							</form>
 				 </div>
-				 <br/>
-
-
-
-
-
-
-
-
-
-
-
 
 				<div id="myData"></div>
 				<script>
-						fetch('employee_data.json')
-								.then(function (response) {
-										return response.json();
-								})
-								.then(function (data) {
-										appendData(data);
-								})
-								.catch(function (err) {
-										console.log('error: ' + err);
-								});
-						function appendData(data) {
-								var mainContainer = document.getElementById("myData");
-								for (var i = 0; i < data.length; i++) {
-										var div = document.createElement("div");
-										div.innerHTML = 'Lattitude: ' + data[i].name + 'Longitude:' + data[i].gender + 'Task:' + data[i].designation;
-										mainContainer.appendChild(div);
-								}
+				fetch('employee_data.json')
+						.then(function (response) {
+								return response.json();
+						})
+						.then(function (data) {
+								appendData(data);
+						})
+						.catch(function (err) {
+								console.log('error: ' + err);
+						});
+				function appendData(data) {
+						var mainContainer = document.getElementById("myData");
+						var mapWidth = 1000;
+						var mapHeight = 446;
+
+						for (var i = 0; i < data.length; i++) {
+								var div = document.createElement("div");
+
+								var lat = (data[i].name - 50.736) * 1000000;
+								var lon = (data[i].gender - 4.699) * 1000000 ;
+
+							//	var y = ((-1 * lat ) + 90) * (mapHeight / 180);
+							//	var x = (lon + 180) * (mapWidth / 360);
+
+								$(div).addClass( "point" );
+								$(div).css({"left":lat+"px", "top":lon+"px"});
+								div.innerHTML = '';
+								mainContainer.appendChild(div);
 						}
-				</script>
+				}
+		</script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

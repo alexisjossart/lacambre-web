@@ -1,0 +1,157 @@
+.ex4-body {
+  background: #d7b7f9;
+}
+
+.header {
+  background: $white;
+  @include spacing(m, padding-top);
+  @include spacing(m, padding-bottom);
+  @include spacing(m, padding-left);
+  @include spacing(m, padding-right);
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  top: -23vh;
+  transition: top .3s ease;
+  box-shadow: 0 0 6px 1px rgba(0,0,0,0.30);
+  border-radius: 8px;
+
+  @include media-query('nav') {
+      top: -5vh;
+  }
+
+  &:hover {
+  top:0;
+  }
+
+}
+
+.header-container {
+  display: flex;
+  flex-wrap: wrap;
+  @include media-query('nav') {
+      flex-wrap: nowrap;
+  }
+
+}
+
+.house {
+  height: 80vh;
+  width: 80vw;
+  border: 1px solid $black;
+  content:'';
+
+}
+
+.btn-submit {
+  background:$white;
+  border: 1px solid $black;
+  width: 100%;
+  height: 4.8rem;
+  @include spacing(m, margin-top);
+
+
+  @include media-query('nav') {
+    width: auto;
+    margin-top: 0;
+    height: auto;
+  }
+}
+
+.text-danger {
+  text-align: center;
+  width: 100%;
+  display: block;
+  @include spacing(m, margin-top);
+  @include spacing(m, margin-bottom);
+  color: red;
+}
+
+#out {
+  border: 1px solid $black;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  width: 100%;
+  height: 4.8rem;
+  @include spacing(s, margin-top);
+  @include spacing(s, margin-bottom);
+
+  @include media-query('nav') {
+    margin-top: 0;
+    height:auto;
+    margin-bottom: 0;
+    min-width: 25%;
+  }
+}
+
+.point {
+  background: $white;
+  content: '.';
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  border-radius: 200%;
+  box-shadow: 0 0 6px 1px rgba(0,0,0,0.30);
+}
+
+.introduction {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: blink-animation 0.5s steps(5, start) infinite;
+}
+
+.covshit-logo {
+  z-index: 1001;
+  position: fixed;
+}
+
+.form-control {
+  border: 1px solid $black;
+  border-radius: 50px;
+  padding: 15px 25px;
+  width: 100%;
+
+  @include spacing(s, margin-top);
+  @include spacing(s, margin-bottom);
+
+  @include media-query('nav') {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+}
+
+#myData {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #D7B7F9;
+  @include spacing(m, margin-left);
+  @include spacing(m, margin-right);
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  z-index: 0;
+  overflow-x: hidden;
+}
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
