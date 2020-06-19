@@ -116,8 +116,9 @@
   position: absolute;
   display: block;
   z-index: 1000;
-  @include spacing(s, margin-left);
+  @include spacing(m, margin-left);
   @include media-query('nav') {
+    @include spacing(s, margin-left);
     height: 96vh;
     width: 50vw;
   }
