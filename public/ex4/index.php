@@ -62,15 +62,15 @@
 			 {
 			      if(empty($_POST["name"]))
 			      {
-			           $error = "<label class='text-danger'>Enter Name</label>";
+			           $error = "<label class='text-danger'>Enter Lattitude</label>";
 			      }
 			      else if(empty($_POST["gender"]))
 			      {
-			           $error = "<label class='text-danger'>Enter Gender</label>";
+			           $error = "<label class='text-danger'>Enter Longitude</label>";
 			      }
 			      else if(empty($_POST["designation"]))
 			      {
-			           $error = "<label class='text-danger'>Enter Designation</label>";
+			           $error = "<label class='text-danger'>Enter Place</label>";
 			      }
 			      else
 			      {

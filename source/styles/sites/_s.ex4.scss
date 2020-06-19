@@ -67,6 +67,15 @@
   color: red;
 }
 
+.text-success {
+  text-align: center;
+  width: 100%;
+  display: block;
+  @include spacing(m, margin-top);
+  @include spacing(m, margin-bottom);
+  color: green;
+}
+
 #out {
   border: 1px solid $black;
   border-radius: 50px;
