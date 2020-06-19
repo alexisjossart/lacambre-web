@@ -106,6 +106,23 @@
   box-shadow: 0 0 6px 1px rgba(0,0,0,0.30);
 }
 
+.house {
+  height: 100%;
+  width: 100%;
+  border: 1px solid #1c1c1c;
+  content: '1';
+  top: 6vh;
+  left: 0;
+  position: absolute;
+  display: block;
+  z-index: 1000;
+  @include spacing(s, margin-left);
+  @include media-query('nav') {
+    height: 96vh;
+    width: 50vw;
+  }
+}
+
 .introduction {
   height: 100%;
   width: 100%;
