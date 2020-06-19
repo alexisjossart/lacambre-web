@@ -125,7 +125,8 @@
 										 <div id="out"></div>
 										 <input id="name" type="text" name="name" placeholder="Lattitude" class="form-control" /><br />
 										 <input id="gender" type="text" name="gender" placeholder="Longitude" class="form-control" /><br />
-										 <input type="submit" name="submit" value="Append" class="btn-submit" /><br />
+										 <input type="text" name="designation" class="form-control" /><br />
+										 <input type="submit" name="submit" value="Revealing my privacy" class="btn-submit" /><br />
 
 										 <?php
 										 if(isset($message))
