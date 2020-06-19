@@ -127,8 +127,8 @@
 										 <input id="gender" type="text" name="gender" placeholder="Longitude" class="form-control" /><br />
 										<!--
 										 <input type="text" name="designation" class="form-control" /><br />
+										-->
 										 <input type="submit" name="submit" value="Append" class="btn-submit" /><br />
-										 -->
 
 										 <?php
 										 if(isset($message))
